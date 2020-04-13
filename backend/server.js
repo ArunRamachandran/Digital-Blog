@@ -16,7 +16,10 @@ const app = express();
 // connect to db
 mongoose
     .connect(process.env.DATABASE, { useNewUrlParser: true,  useCreateIndex: true, useFindAndModify: false })
-    .then(() => console.log('DB Connected'));
+    .then(() => console.log('DB Connected'))
+    .catch(err => {
+        console.log('DB connection error: ', err);
+    })
 
 //apply middlewares
 app.use(morgan('dev'));
